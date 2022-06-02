@@ -52,6 +52,11 @@ namespace ProjetPizza
         /// <returns></returns>
         private static string FormatPremierLettreMajuscule (string s)
         {
+            if (string.IsNullOrEmpty(s))
+            {
+                return s;
+            }
+
             string nomMinuscules = s.ToLower();
             string nomMajuscule = s.ToUpper();
 
