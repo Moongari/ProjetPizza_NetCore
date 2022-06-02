@@ -9,7 +9,7 @@ namespace ProjetPizza
     public class Pizza
     {
         public string nom { get; set; }
-        public float prix { get; set; }
+        public float prix { get; private set; }
         public bool vegetarienne = false;
         public List<String> ingredients;
 
@@ -46,6 +46,8 @@ namespace ProjetPizza
 
             // utilisation de le requete linq afin de parcourir les elements et les formatés
             var ingredientAfficher = ingredients.Select(i=> FormatPremierLettreMajuscule(i)).ToList();
+
+           
            
             Console.WriteLine(String.Join(",", ingredientAfficher));
             
@@ -98,7 +100,18 @@ namespace ProjetPizza
             };
 
 
-            foreach (var pizza in listPizza)
+            var pizzxaMoinsCher = listPizza.OrderBy(p => p.prix).ToList();
+            var pizzaPlusCher = listPizza.OrderByDescending(p => p.prix).ToList();
+
+            foreach (var pizza in pizzxaMoinsCher)
+            {
+                pizza.afficher();
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("PIZZA DU PLUS CHER AU MOINS CHER");
+
+            foreach (var pizza in pizzaPlusCher)
             {
                 pizza.afficher();
             }
