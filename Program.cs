@@ -45,9 +45,11 @@ namespace ProjetPizza
             var listPizza = new List<Pizza>() { 
 
                 new Pizza() { nom = "4 fromages", prix = 10.5f, vegetarienne = true },
-                 new Pizza() { nom = "Napolitaine", prix = 13.5f, vegetarienne = false },
-                  new Pizza() { nom = "4 saisons", prix = 12f, vegetarienne = true },
-                   new Pizza() { nom = "LA vegetarienne", prix = 11.5f, vegetarienne = true },
+                new Pizza() { nom = "Napolitaine", prix = 13.5f, vegetarienne = false },
+                new Pizza() { nom = "4 saisons", prix = 12f, vegetarienne = true },
+                new Pizza() { nom = "LA vegetarienne", prix = 11.5f, vegetarienne = true },
+                new Pizza() { nom = "Indienne", prix = 14.5f, vegetarienne = false },
+                new Pizza() { nom = "Calzone", prix = 9.5f, vegetarienne = false },
             };
 
 
