@@ -40,15 +40,18 @@ Ce qu'il est requis pour commencer avec votre projet...
 
 Ensuite vous pouvez montrer ce que vous obtenez au final...
 
-## Démarrage
-
+## PROJET PIZZA
+ ce projet a pour but d'aborder tous principes de la programmation orienté objet en C#.
+ je reviendrai et commenterai certains point du code afin d'expliquer plus en details ce qui se passe.
+ 
+ ce projet va permettre de pouvoir commander et créer des pizzas !!! Hummm miam miam
 
 
 
 
 ## Fabriqué avec
 
-
+ visual studio 2022
 
 
 
@@ -58,6 +61,7 @@ Ensuite vous pouvez montrer ce que vous obtenez au final...
 
 
 ## Versions
+.NET CORE 5.0
 
 
 **Dernière version stable :** 1.0
