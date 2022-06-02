@@ -10,17 +10,19 @@ namespace ProjetPizza
         public string nom { get; set; }
         public float prix { get; set; }
         public bool vegetarienne = false;
+        public List<String> ingredients;
 
         public Pizza()
         {
          
         }
 
-        public Pizza(string nom, float prix,bool vegetarienne)
+        public Pizza(string nom, float prix,bool vegetarienne,List<String> ingredients)
         {
             this.nom = nom;
             this.prix = prix;
             this.vegetarienne = vegetarienne;
+            this.ingredients = ingredients;
         }
 
         /// <summary>
@@ -40,7 +42,9 @@ namespace ProjetPizza
             string nomAfficher = FormatPremierLettreMajuscule(nom);
 
             Console.WriteLine($" nom : {nomAfficher} {badgeVegetarienne} - prix : {prix} € ");
-          
+           
+            Console.WriteLine(String.Join(",", ingredients));
+            Console.WriteLine();
                 
         }
 
@@ -76,14 +80,16 @@ namespace ProjetPizza
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            var listPizza = new List<Pizza>() { 
+            //List<String> ingredients = new List<string>() { "mozarella", "Poulet", "oignon", "cantal", "gruyere", "Comte", "poivrons" };
 
-                new Pizza() { nom = "4 fromages", prix = 10.5f, vegetarienne = true },
-                new Pizza() { nom = "napolitaine", prix = 13.5f, vegetarienne = false },
-                new Pizza() { nom = "4 saisons", prix = 12f, vegetarienne = true },
-                new Pizza() { nom = "vegetarienne", prix = 11.5f, vegetarienne = true },
-                new Pizza() { nom = "indienne", prix = 14.5f, vegetarienne = false },
-                new Pizza() { nom = "calzone", prix = 9.5f, vegetarienne = false },
+            var listPizza = new List<Pizza>() {
+
+                new Pizza("4 fromages",10.5f,true,new List<String>(){"mozarella","Comte","Camembert","Cheddar" }) ,
+                new Pizza("napolitaine",13.5f,false,new List<String>(){"mozarella","Comte","Tomate" }),
+                new Pizza("4 saisons",12f,true,new List<String>(){"mozarella","Tomate","oignons","poivrons" }) ,
+                new Pizza("vegetarienne",11.5f, true,new List<String>(){"mozarella","Oeufs","Tomate","Choux" }) ,
+                new Pizza("indienne", 14.5f,  false,new List<String>(){"mozarella","Poulet","oignons","Curry","Tomate" } ),
+                new Pizza("calzone", 9.5f,false,new List<String>(){"mozarella","Jambon","Tomate","Poulet" } )
             };
 
 
