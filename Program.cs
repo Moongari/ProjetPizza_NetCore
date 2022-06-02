@@ -36,7 +36,7 @@ namespace ProjetPizza
             // cette synthaxe permet de modifier le nom sans alterer la variable nom instance de la classe Pizza
             //  nomMinuscules[1..] cette synthaxe permet de dire que toutes les autres caracteres seront en minuscules
 
-            // on aurait pu faire egalement 
+            
             string nomAfficher = FormatPremierLettreMajuscule(nom);
 
             Console.WriteLine($" nom : {nomAfficher} {badgeVegetarienne} - prix : {prix} € ");
