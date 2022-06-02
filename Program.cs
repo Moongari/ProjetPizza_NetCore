@@ -25,15 +25,15 @@ namespace ProjetPizza
 
         public void afficher()
         {
-            if (vegetarienne)
-            {
-                Console.WriteLine($" nom : {nom} (V) - prix : {prix} € ");
-            }
-            else
-            {
-                Console.WriteLine($" nom : {nom} - prix : {prix} € ");
-            }
-           
+
+            string badgeVegetarienne ;
+
+            string vegeratienne = vegetarienne == true ? badgeVegetarienne = " (V) " : badgeVegetarienne="";
+
+            Console.WriteLine($" nom : {nom} {badgeVegetarienne} - prix : {prix} € ");
+          
+                 
+            
 
         }
 
