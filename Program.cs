@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ProjetPizza
 {
@@ -42,8 +43,12 @@ namespace ProjetPizza
             string nomAfficher = FormatPremierLettreMajuscule(nom);
 
             Console.WriteLine($" nom : {nomAfficher} {badgeVegetarienne} - prix : {prix} € ");
+
+            // utilisation de le requete linq afin de parcourir les elements et les formatés
+            var ingredientAfficher = ingredients.Select(i=> FormatPremierLettreMajuscule(i)).ToList();
            
-            Console.WriteLine(String.Join(",", ingredients));
+            Console.WriteLine(String.Join(",", ingredientAfficher));
+            
             Console.WriteLine();
                 
         }
