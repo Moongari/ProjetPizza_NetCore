@@ -23,22 +23,41 @@ namespace ProjetPizza
             this.vegetarienne = vegetarienne;
         }
 
+        /// <summary>
+        /// Cette methode affiche uniquement les données 
+        /// elle ne doit pas modifier les données
+        /// </summary>
         public void afficher()
         {
 
           
             string badgeVegetarienne = vegetarienne ?  " (V) " : "";
-            string nomMinuscules = nom.ToLower();
-            string nomMajuscule = nom.ToUpper();
+
             // cette synthaxe permet de modifier le nom sans alterer la variable nom instance de la classe Pizza
             //  nomMinuscules[1..] cette synthaxe permet de dire que toutes les autres caracteres seront en minuscules
-            string nomAfficher = nomMajuscule[0] + nomMinuscules[1..];
+
             // on aurait pu faire egalement 
-            //string nomAfficher1 = nomMajuscule[0] + nomMinuscules.Substring(1);
+            string nomAfficher = FormatPremierLettreMajuscule(nom);
 
             Console.WriteLine($" nom : {nomAfficher} {badgeVegetarienne} - prix : {prix} € ");
           
                 
+        }
+
+        /// <summary>
+        /// Lorqu'une methode ne depend ou ne modifie
+        /// aucune données de notre pizza on peut la placer en static
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        private static string FormatPremierLettreMajuscule (string s)
+        {
+            string nomMinuscules = s.ToLower();
+            string nomMajuscule = s.ToUpper();
+
+            string nomAfficher = nomMajuscule[0] + nomMinuscules[1..];
+
+            return nomAfficher;
         }
 
      
