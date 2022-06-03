@@ -12,10 +12,13 @@ namespace ProjetPizza
     public class PizzaPersonnalise : Pizza
     {
 
+        static int index = 0;
         public PizzaPersonnalise() : base("Personnalise",5f,false,null)
         {
             ingredients = new List<string>();
 
+            index++;
+            this.nom = this.nom +"" + index;
            
 
             while (true)
@@ -29,6 +32,7 @@ namespace ProjetPizza
                 if (!ingredients.Contains(ingredient))
                 {
                     ingredients.Add(ingredient);
+                    this.prix = this.prix + 1.5f;
                 }
               
                 Console.WriteLine(String.Join("," ,ingredients));
@@ -141,7 +145,9 @@ namespace ProjetPizza
                 new Pizza("vegetarienne",11.5f, true,new List<String>(){"mozarella","Oeufs","Tomate","Choux" }) ,
                 new Pizza("indienne", 14.5f,  false,new List<String>(){"mozarella","Poulet","oignons","Curry","Tomate" } ),
                 new Pizza("calzone", 9.5f,false,new List<String>(){"mozarella","Jambon","Tomate","Poulet" } ),
+                new PizzaPersonnalise(),
                 new PizzaPersonnalise()
+
             };
 
 
