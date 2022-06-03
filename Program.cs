@@ -6,12 +6,50 @@ namespace ProjetPizza
 {
 
 
+
+
+
+    public class PizzaPersonnalise : Pizza
+    {
+
+        public PizzaPersonnalise() : base("Personnalise",5f,false,null)
+        {
+            ingredients = new List<string>();
+
+           
+
+            while (true)
+            {
+                Console.WriteLine("Entrez la liste de vos ingredients");
+                string ingredient = Console.ReadLine();
+
+           
+                if (String.IsNullOrWhiteSpace(ingredient)) { break; }
+
+                if (!ingredients.Contains(ingredient))
+                {
+                    ingredients.Add(ingredient);
+                }
+              
+                Console.WriteLine(String.Join("," ,ingredients));
+
+            }
+
+        }
+
+        
+
+    }
+
+    /// <summary>
+    /// Classe Pizza
+    /// </summary>
     public class Pizza
     {
         public string nom { get; set; }
-        public float prix { get; private set; }
+        public float prix { get; init ; }
         public bool vegetarienne = false;
-        public List<String> ingredients;
+        public List<String> ingredients { get; protected set; }
 
         public Pizza()
         {
@@ -89,6 +127,12 @@ namespace ProjetPizza
 
             //List<String> ingredients = new List<string>() { "mozarella", "Poulet", "oignon", "cantal", "gruyere", "Comte", "poivrons" };
 
+
+        
+           
+
+      
+
             var listPizza = new List<Pizza>() {
 
                 new Pizza("4 fromages",10.5f,true,new List<String>(){"mozarella","Comte","Camembert","Cheddar" }) ,
@@ -96,9 +140,18 @@ namespace ProjetPizza
                 new Pizza("4 saisons",12f,true,new List<String>(){"mozarella","Tomates","oignons","poivrons" }) ,
                 new Pizza("vegetarienne",11.5f, true,new List<String>(){"mozarella","Oeufs","Tomate","Choux" }) ,
                 new Pizza("indienne", 14.5f,  false,new List<String>(){"mozarella","Poulet","oignons","Curry","Tomate" } ),
-                new Pizza("calzone", 9.5f,false,new List<String>(){"mozarella","Jambon","Tomate","Poulet" } )
+                new Pizza("calzone", 9.5f,false,new List<String>(){"mozarella","Jambon","Tomate","Poulet" } ),
+                new PizzaPersonnalise()
             };
 
+
+            foreach (var p in listPizza)
+            {
+                p.afficher();
+            }
+
+
+                
 
             //var pizzxaMoinsCher = listPizza.OrderBy(p => p.prix).ToList();
             //var pizzaPlusCher = listPizza.OrderByDescending(p => p.prix).ToList();
