@@ -139,6 +139,7 @@ namespace ProjetPizza
             Console.WriteLine($"la pizza la plus cher est : {pizza} - {prixMax} €");
 
 
+            //liste des pizzas uniquement vegetarienne
 
             var listPizzaVegetarienne = listPizza.Where(p => p.vegetarienne)
                 .Select(p => p.nom).ToList();
