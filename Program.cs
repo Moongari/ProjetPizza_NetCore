@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace ProjetPizza
@@ -138,6 +139,7 @@ namespace ProjetPizza
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
+            File.WriteAllText("monFichier.txt", "Données saisie dans le fichier");
 
         }
     }
