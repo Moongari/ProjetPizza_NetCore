@@ -140,27 +140,31 @@ namespace ProjetPizza
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
 
+           
+           //var path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            var path = "out";
+            Directory.CreateDirectory(path);
             string filename = "monFichier1.txt";
-           var path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             string pathAndFile = Path.Combine(path, filename);
+            
 
-            //Console.WriteLine("Fichier ecrit dans " + pathAndFile);
-            //File.WriteAllLines(pathAndFile, new List<string>() { "Moustafa","Yassine"});
+            Console.WriteLine("Fichier ecrit dans " + pathAndFile);
+            File.WriteAllLines(pathAndFile, new List<string>() { "Moustafa","Yassine"});
 
-            Console.WriteLine("Lecture du fichier");
+            //Console.WriteLine("Lecture du fichier");
 
-            if (File.Exists(pathAndFile))
-            {
-                var result = File.ReadLines(pathAndFile);
+            //if (File.Exists(pathAndFile))
+            //{
+            //    var result = File.ReadLines(pathAndFile);
 
-                foreach (var data in result)
-                {
-                    Console.WriteLine($" {data} ");
-                }
-            }else
-            {
-                Console.WriteLine("Le fichier demande <" + filename + "> n'existe pas");
-            }
+            //    foreach (var data in result)
+            //    {
+            //        Console.WriteLine($" {data} ");
+            //    }
+            //}else
+            //{
+            //    Console.WriteLine("Le fichier demande <" + filename + "> n'existe pas");
+            //}
          
 
 
