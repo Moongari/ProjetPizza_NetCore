@@ -139,7 +139,30 @@ namespace ProjetPizza
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            File.WriteAllText("monFichier.txt", "Données saisie dans le fichier");
+           
+            File.WriteAllLines("monFichier.txt",new List<string>() { "Robert","Paul","Albert"});
+
+
+
+            try
+            {
+                var result = File.ReadAllLines("monFichier.txt");
+                foreach (var item in result)
+                {
+                    Console.WriteLine(item);
+                }
+               
+            }
+            catch (FileNotFoundException ex1)
+            {
+
+                Console.WriteLine("Erreur ce fichier n'existe pas" + ex1);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("autre erreur non gerer"+ ex);
+            }
+          
 
         }
     }
