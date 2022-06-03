@@ -100,21 +100,42 @@ namespace ProjetPizza
             };
 
 
-            var pizzxaMoinsCher = listPizza.OrderBy(p => p.prix).ToList();
-            var pizzaPlusCher = listPizza.OrderByDescending(p => p.prix).ToList();
+            //var pizzxaMoinsCher = listPizza.OrderBy(p => p.prix).ToList();
+            //var pizzaPlusCher = listPizza.OrderByDescending(p => p.prix).ToList();
 
-            foreach (var pizza in pizzxaMoinsCher)
+            //foreach (var pizza in pizzxaMoinsCher)
+            //{
+            //    pizza.afficher();
+            //}
+
+            //Console.WriteLine();
+            //Console.WriteLine("PIZZA DU PLUS CHER AU MOINS CHER");
+
+            //foreach (var pizza in pizzaPlusCher)
+            //{
+            //    pizza.afficher();
+            //}
+
+            float prixMin = 0;
+            float prixMax = 0;
+            string pizza = string.Empty;
+
+
+            foreach (var p in listPizza)
             {
-                pizza.afficher();
+
+                    if(prixMin == 0) { prixMin = p.prix; }
+                    if(prixMax == 0) { prixMax = p.prix; }
+                    if(prixMin > p.prix) { prixMin = p.prix; pizza = p.nom; }
+                    if (prixMax < p.prix) { prixMax = p.prix; pizza = p.nom; }
+
+
             }
 
-            Console.WriteLine();
-            Console.WriteLine("PIZZA DU PLUS CHER AU MOINS CHER");
+            Console.WriteLine($"la pizza la moins cher est : {pizza} - {prixMin} €");
+            Console.WriteLine($"la pizza la plus cher est : {pizza} - {prixMax} €");
 
-            foreach (var pizza in pizzaPlusCher)
-            {
-                pizza.afficher();
-            }
+
         }
     }
 }
