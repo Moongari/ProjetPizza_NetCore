@@ -93,7 +93,7 @@ namespace ProjetPizza
 
                 new Pizza("4 fromages",10.5f,true,new List<String>(){"mozarella","Comte","Camembert","Cheddar" }) ,
                 new Pizza("napolitaine",13.5f,false,new List<String>(){"mozarella","Comte","Tomate" }),
-                new Pizza("4 saisons",12f,true,new List<String>(){"mozarella","Tomate","oignons","poivrons" }) ,
+                new Pizza("4 saisons",12f,true,new List<String>(){"mozarella","Tomates","oignons","poivrons" }) ,
                 new Pizza("vegetarienne",11.5f, true,new List<String>(){"mozarella","Oeufs","Tomate","Choux" }) ,
                 new Pizza("indienne", 14.5f,  false,new List<String>(){"mozarella","Poulet","oignons","Curry","Tomate" } ),
                 new Pizza("calzone", 9.5f,false,new List<String>(){"mozarella","Jambon","Tomate","Poulet" } )
@@ -150,6 +150,19 @@ namespace ProjetPizza
                 Console.WriteLine($"Pizza veg : {item}");
             }
 
+            // rechercher dans la liste des ingredients toutes les pizzas qui ont de la tomate
+
+            var pizzaContientTomate = listPizza. 
+                Where(p=>p.ingredients. // on parcours l'ensemble des pizzas
+                Where(i=> i.ToLower().Contains("tomate")).ToList().Count>0) // et on recherche pour chaque ingredient contenu dans une pizza si elle posse de la tomate
+                .OrderBy(p=>p.prix).ToList(); // on trie de la moins chere a la plus chere.
+            
+            Console.WriteLine();
+            Console.WriteLine("===liste des pizzas qui contiennent de la Tomate===");
+            foreach (var item in pizzaContientTomate)
+            {
+                Console.WriteLine($"{item.nom} - {item.prix} €");
+            }
 
         }
     }
