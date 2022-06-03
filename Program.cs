@@ -118,8 +118,17 @@ namespace ProjetPizza
             return nomAfficher;
         }
 
-     
-        
+
+        /// <summary>
+        /// on peut definir une methode bool qui verifie si la liste d'ingredient contient un tel ingredient
+        /// </summary>
+        /// <param name="ingredient"></param>
+        /// <returns></returns>
+        public  bool contientIngredient(string ingredient)
+        {
+            return ingredients.Where(i => i.ToLower().Contains("tomate")).ToList().Count > 0;
+        }
+
 
     }
 
@@ -129,14 +138,7 @@ namespace ProjetPizza
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            //List<String> ingredients = new List<string>() { "mozarella", "Poulet", "oignon", "cantal", "gruyere", "Comte", "poivrons" };
-
-
-        
-           
-
       
-
             var listPizza = new List<Pizza>() {
 
                 new Pizza("4 fromages",10.5f,true,new List<String>(){"mozarella","Comte","Camembert","Cheddar" }) ,
@@ -159,44 +161,7 @@ namespace ProjetPizza
 
                 
 
-            //var pizzxaMoinsCher = listPizza.OrderBy(p => p.prix).ToList();
-            //var pizzaPlusCher = listPizza.OrderByDescending(p => p.prix).ToList();
-
-            //foreach (var pizza in pizzxaMoinsCher)
-            //{
-            //    pizza.afficher();
-            //}
-
-            //Console.WriteLine();
-            //Console.WriteLine("PIZZA DU PLUS CHER AU MOINS CHER");
-
-            //foreach (var pizza in pizzaPlusCher)
-            //{
-            //    pizza.afficher();
-            //}
-
-            float prixMin = 0;
-            float prixMax = 0;
-            string pizza = string.Empty;
-
-
-       
-
-
-            foreach (var p in listPizza)
-            {
-
-                    if(prixMin == 0) { prixMin = p.prix; }
-                    if(prixMax == 0) { prixMax = p.prix; }
-                    if(prixMin > p.prix) { prixMin = p.prix; pizza = p.nom; }
-                    if (prixMax < p.prix) { prixMax = p.prix; pizza = p.nom; }
-
-
-            }
-
-            Console.WriteLine($"la pizza la moins cher est : {pizza} - {prixMin} €");
-            Console.WriteLine($"la pizza la plus cher est : {pizza} - {prixMax} €");
-
+          
 
             //liste des pizzas uniquement vegetarienne
 
@@ -211,11 +176,11 @@ namespace ProjetPizza
 
             // rechercher dans la liste des ingredients toutes les pizzas qui ont de la tomate
 
+            //on fait appel a cette methode et on simplifie ainsi l'expression
             var pizzaContientTomate = listPizza. 
-                Where(p=>p.ingredients. // on parcours l'ensemble des pizzas
-                Where(i=> i.ToLower().Contains("tomate")).ToList().Count>0) // et on recherche pour chaque ingredient contenu dans une pizza si elle posse de la tomate
-                .OrderBy(p=>p.prix).ToList(); // on trie de la moins chere a la plus chere.
-            
+                Where(p=> p.contientIngredient("tomate")).ToList();
+
+
             Console.WriteLine();
             Console.WriteLine("===liste des pizzas qui contiennent de la Tomate===");
             foreach (var item in pizzaContientTomate)
