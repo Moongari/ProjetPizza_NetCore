@@ -149,26 +149,36 @@ namespace ProjetPizza
             }
             
             string filename = "monFichier1.txt";
+            string filename2 = "monFichier2.txt";
             string pathAndFile = Path.Combine(path, filename);
-            
+            string pathAndFile2 = Path.Combine(path, filename2);
 
             Console.WriteLine("Fichier ecrit dans " + pathAndFile);
             File.WriteAllLines(pathAndFile, new List<string>() { "Moustafa","Yassine"});
 
-            //Console.WriteLine("Lecture du fichier");
+            if (!File.Exists(pathAndFile2))
+            {
+                File.Copy(pathAndFile, pathAndFile2);
+                Console.WriteLine("Copie du fichier" + filename2);
+            }
+           
 
-            //if (File.Exists(pathAndFile))
-            //{
-            //    var result = File.ReadLines(pathAndFile);
+            if (File.Exists(pathAndFile2))
+            {
+                File.Delete(pathAndFile2);
+            }
 
-            //    foreach (var data in result)
-            //    {
-            //        Console.WriteLine($" {data} ");
-            //    }
-            //}else
-            //{
-            //    Console.WriteLine("Le fichier demande <" + filename + "> n'existe pas");
-            //}
+            //suppression de tous les fichiers contenues dans le repertoire
+            DirectoryInfo dirInfo = new DirectoryInfo(path);
+            FileInfo[] files = dirInfo.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                if (File.Exists(file.FullName))
+                {
+                    file.Delete();
+                }
+            }
+          
          
 
 
