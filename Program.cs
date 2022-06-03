@@ -140,10 +140,14 @@ namespace ProjetPizza
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
 
-           
-           //var path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+
+            //var path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             var path = "out";
-            Directory.CreateDirectory(path);
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            
             string filename = "monFichier1.txt";
             string pathAndFile = Path.Combine(path, filename);
             
