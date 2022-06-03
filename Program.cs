@@ -121,6 +121,9 @@ namespace ProjetPizza
             string pizza = string.Empty;
 
 
+       
+
+
             foreach (var p in listPizza)
             {
 
@@ -134,6 +137,17 @@ namespace ProjetPizza
 
             Console.WriteLine($"la pizza la moins cher est : {pizza} - {prixMin} €");
             Console.WriteLine($"la pizza la plus cher est : {pizza} - {prixMax} €");
+
+
+
+            var listPizzaVegetarienne = listPizza.Where(p => p.vegetarienne)
+                .Select(p => p.nom).ToList();
+
+            foreach (var item in listPizzaVegetarienne)
+            {
+
+                Console.WriteLine($"Pizza veg : {item}");
+            }
 
 
         }
