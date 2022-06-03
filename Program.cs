@@ -138,55 +138,6 @@ namespace ProjetPizza
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-      
-            var listPizza = new List<Pizza>() {
-
-                new Pizza("4 fromages",10.5f,true,new List<String>(){"mozarella","Comte","Camembert","Cheddar" }) ,
-                new Pizza("napolitaine",13.5f,false,new List<String>(){"mozarella","Comte","Tomate" }),
-                new Pizza("4 saisons",12f,true,new List<String>(){"mozarella","Tomates","oignons","poivrons" }) ,
-                new Pizza("vegetarienne",11.5f, true,new List<String>(){"mozarella","Oeufs","Tomate","Choux" }) ,
-                new Pizza("indienne", 14.5f,  false,new List<String>(){"mozarella","Poulet","oignons","Curry","Tomate" } ),
-                new Pizza("calzone", 9.5f,false,new List<String>(){"mozarella","Jambon","Tomate","Poulet" } ),
-                new PizzaPersonnalise(),
-                new PizzaPersonnalise()
-
-            };
-
-
-            foreach (var p in listPizza)
-            {
-                p.afficher();
-            }
-
-
-                
-
-          
-
-            //liste des pizzas uniquement vegetarienne
-
-            var listPizzaVegetarienne = listPizza.Where(p => p.vegetarienne)
-                .Select(p => p.nom).ToList();
-
-            foreach (var item in listPizzaVegetarienne)
-            {
-
-                Console.WriteLine($"Pizza veg : {item}");
-            }
-
-            // rechercher dans la liste des ingredients toutes les pizzas qui ont de la tomate
-
-            //on fait appel a cette methode et on simplifie ainsi l'expression
-            var pizzaContientTomate = listPizza. 
-                Where(p=> p.contientIngredient("tomate")).ToList();
-
-
-            Console.WriteLine();
-            Console.WriteLine("===liste des pizzas qui contiennent de la Tomate===");
-            foreach (var item in pizzaContientTomate)
-            {
-                Console.WriteLine($"{item.nom} - {item.prix} €");
-            }
 
         }
     }
