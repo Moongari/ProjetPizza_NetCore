@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace ProjetPizza
 {
@@ -149,37 +150,24 @@ namespace ProjetPizza
             }
             
             string filename = "monFichier1.txt";
-            string filename2 = "monFichier2.txt";
+        
             string pathAndFile = Path.Combine(path, filename);
-            string pathAndFile2 = Path.Combine(path, filename2);
+
 
             Console.WriteLine("Fichier ecrit dans " + pathAndFile);
-            File.WriteAllLines(pathAndFile, new List<string>() { "Moustafa","Yassine"});
 
-            if (!File.Exists(pathAndFile2))
+            int nbLigne = 500000;
+            StringBuilder ligne = new StringBuilder();
+            Console.WriteLine("Ecriture des données....");
+            for (int i = 0; i < nbLigne; i++)
             {
-                File.Copy(pathAndFile, pathAndFile2);
-                Console.WriteLine("Copie du fichier" + filename2);
+               ligne.Append( "ligne \n"  + i);
             }
            
+            File.WriteAllText(pathAndFile, ligne.ToString());
+            Console.WriteLine("Traitement termine..");
 
-            if (File.Exists(pathAndFile2))
-            {
-                File.Delete(pathAndFile2);
-            }
 
-            //suppression de tous les fichiers contenues dans le repertoire
-            DirectoryInfo dirInfo = new DirectoryInfo(path);
-            FileInfo[] files = dirInfo.GetFiles();
-            foreach (FileInfo file in files)
-            {
-                if (File.Exists(file.FullName))
-                {
-                    file.Delete();
-                }
-            }
-          
-         
 
 
         }
