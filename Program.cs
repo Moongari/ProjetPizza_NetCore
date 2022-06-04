@@ -51,6 +51,21 @@ namespace ProjetPizza
             Console.WriteLine("Sauvegarde des données Terminées");
             Console.WriteLine(json);
 
+
+
+            Console.WriteLine(" lecture des données");
+            using(var stream = File.OpenText(pathAndFile))
+            {
+                while (true)
+                {
+                    var line = stream.ReadLine();
+                    if (line == null) { break; }
+
+                    List<Personne> person = JsonConvert.DeserializeObject<List<Personne>>(line);
+                    person.ForEach(personne => personne.afficher());
+                }
+            }
+
         }
     }
 }
