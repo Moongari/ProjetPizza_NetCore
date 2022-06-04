@@ -148,33 +148,49 @@ namespace ProjetPizza
 
 
             //var path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            //var path = "out";
-            //if (!Directory.Exists(path))
-            //{
-            //    Directory.CreateDirectory(path);
-            //}
-            
-            //string filename = "monFichier1.txt";
-        
-            //string pathAndFile = Path.Combine(path, filename);
+            var path = "out";
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            string filename = "monFichier1.txt";
+
+            string pathAndFile = Path.Combine(path, filename);
 
 
-            //Console.WriteLine("Fichier ecrit dans " + pathAndFile);
+            Console.WriteLine("Fichier ecrit dans " + pathAndFile);
 
-            //int nbLigne = 500000;
-            //StringBuilder ligne = new StringBuilder();
-            //Console.WriteLine("Ecriture des données....");
-            //for (int i = 0; i < nbLigne; i++)
-            //{
-            //   ligne.Append( "ligne \n"  + i);
-            //}
-           
-            //File.WriteAllText(pathAndFile, ligne.ToString());
-            //Console.WriteLine("Traitement termine..");
+            int nbLigne = 50000000;
+            StringBuilder ligne = new StringBuilder();
+            Console.WriteLine("Ecriture des données...avec StringBuilder.");
+            DateTime t1 = DateTime.Now;
+            for (int i = 0; i < nbLigne; i++)
+            {
+                ligne.Append("ligne \n" + i);
+            }
+
+            File.WriteAllText(pathAndFile, ligne.ToString());
+            Console.WriteLine("Traitement termine..");
+            DateTime t2 = DateTime.Now;
+
+            var diff = (int)(t2 - t1).TotalMilliseconds;
+            Console.WriteLine($"Temps ecoule : {diff} ms");
 
 
 
-
+            DateTime t1Stream = DateTime.Now;
+            Console.WriteLine("Ecriture des données avec un Stream");
+            using (var writeSteam = File.CreateText(pathAndFile))
+            {
+                for (int i = 0; i < nbLigne; i++)
+                {
+                    writeSteam.Write("ligne \n" + i);
+                }
+            }
+            DateTime t2Stream = DateTime.Now;
+            var diffStream = (int)(t2Stream - t1Stream).TotalMilliseconds;
+            Console.WriteLine($"Temps ecoule : {diffStream} ms");
         }
     }
 }
