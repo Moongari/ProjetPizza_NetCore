@@ -191,6 +191,22 @@ namespace ProjetPizza
             DateTime t2Stream = DateTime.Now;
             var diffStream = (int)(t2Stream - t1Stream).TotalMilliseconds;
             Console.WriteLine($"Temps ecoule : {diffStream} ms");
+
+
+            // lecture de gros fichiers a l'aide des streams
+
+            using (var readStream = File.OpenText(pathAndFile))
+            {
+                while (true)
+                {
+                    var line = readStream.ReadLine();
+                    if(line == null)
+                    {
+                        break;
+                    }
+                    Console.WriteLine($"{ligne}");
+                }
+            }
         }
     }
 }
