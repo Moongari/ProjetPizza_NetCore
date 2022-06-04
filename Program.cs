@@ -140,32 +140,37 @@ namespace ProjetPizza
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
+            Utiles gestionFichier = new Utiles();
+
+            gestionFichier.description = "information log sur la machine :" + Environment.UserName;
+
+            gestionFichier.writeFile(gestionFichier.joinPathAndFile());
 
 
             //var path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            var path = "out";
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
+            //var path = "out";
+            //if (!Directory.Exists(path))
+            //{
+            //    Directory.CreateDirectory(path);
+            //}
             
-            string filename = "monFichier1.txt";
+            //string filename = "monFichier1.txt";
         
-            string pathAndFile = Path.Combine(path, filename);
+            //string pathAndFile = Path.Combine(path, filename);
 
 
-            Console.WriteLine("Fichier ecrit dans " + pathAndFile);
+            //Console.WriteLine("Fichier ecrit dans " + pathAndFile);
 
-            int nbLigne = 500000;
-            StringBuilder ligne = new StringBuilder();
-            Console.WriteLine("Ecriture des données....");
-            for (int i = 0; i < nbLigne; i++)
-            {
-               ligne.Append( "ligne \n"  + i);
-            }
+            //int nbLigne = 500000;
+            //StringBuilder ligne = new StringBuilder();
+            //Console.WriteLine("Ecriture des données....");
+            //for (int i = 0; i < nbLigne; i++)
+            //{
+            //   ligne.Append( "ligne \n"  + i);
+            //}
            
-            File.WriteAllText(pathAndFile, ligne.ToString());
-            Console.WriteLine("Traitement termine..");
+            //File.WriteAllText(pathAndFile, ligne.ToString());
+            //Console.WriteLine("Traitement termine..");
 
 
 
