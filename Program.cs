@@ -22,14 +22,18 @@ namespace ProjetPizza
             // Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             //Programme_ Reseau
-            string url = "Https://codeavecjonathan.com/res/pizzassss1.json";
-
+            string url = "Https://codeavecjonathan.com/res/pizzas1.json";
+            string url2 = "Https://codeavecjonathan.com/res/papillon.jpg";
             var webClient = new WebClient();
             //appel synchrone
             try
             {
                 String reponse = webClient.DownloadString(url);
                 Console.WriteLine(reponse);
+                webClient.DownloadFile(url2, "papillon.jpg");
+                Console.WriteLine("Telechargement terminé");
+
+
             }
             catch (WebException ex)
             {
