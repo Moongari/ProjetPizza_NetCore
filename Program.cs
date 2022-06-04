@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -34,9 +35,17 @@ namespace ProjetPizza
             personne.age = 20;
 
             personne.afficher();
-      
 
 
+            //serialisation de l'objet Personne
+            var json = JsonConvert.SerializeObject(personne);
+            Console.WriteLine(json);
+
+            //deserialisation d'un fichier json 
+            string jsonJohn = "{\"Name\":\"john\",\"age\":34}";
+            Personne person = JsonConvert.DeserializeObject<Personne>(jsonJohn);
+            person.afficher();
+        
         }
     }
 }
