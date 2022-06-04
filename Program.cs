@@ -22,7 +22,7 @@ namespace ProjetPizza
             // Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             //Programme_ Reseau
-            string url = "Https://codeavecjonathan.com/res/pizzas1.json";
+            string url = "Https://codeavec_jonathan.com/res/pizzas1.json";
             string url2 = "Https://codeavecjonathan.com/res/papillon.jpg";
             var webClient = new WebClient();
             //appel synchrone
