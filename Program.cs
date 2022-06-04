@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace ProjetPizza
+namespace ProgrammeDateTime
 {
 
 
@@ -19,6 +19,7 @@ namespace ProjetPizza
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             // demarrage sur de nouvelles fonctionnalite a connaitre
 
+            //DateTime
 
          
          
