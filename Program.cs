@@ -139,74 +139,8 @@ namespace ProjetPizza
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
+            // gestion des fichiers JSON
 
-            Utiles gestionFichier = new Utiles();
-
-            gestionFichier.description = "information log sur la machine :" + Environment.UserName;
-
-            gestionFichier.writeFile(gestionFichier.joinPathAndFile());
-
-
-            //var path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            var path = "out";
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
-
-            string filename = "monFichier1.txt";
-
-            string pathAndFile = Path.Combine(path, filename);
-
-
-            Console.WriteLine("Fichier ecrit dans " + pathAndFile);
-
-            int nbLigne = 50000000;
-            StringBuilder ligne = new StringBuilder();
-            Console.WriteLine("Ecriture des données...avec StringBuilder.");
-            DateTime t1 = DateTime.Now;
-            for (int i = 0; i < nbLigne; i++)
-            {
-                ligne.Append("ligne \n" + i);
-            }
-
-            File.WriteAllText(pathAndFile, ligne.ToString());
-            Console.WriteLine("Traitement termine..");
-            DateTime t2 = DateTime.Now;
-
-            var diff = (int)(t2 - t1).TotalMilliseconds;
-            Console.WriteLine($"Temps ecoule : {diff} ms");
-
-
-
-            DateTime t1Stream = DateTime.Now;
-            Console.WriteLine("Ecriture des données avec un Stream");
-            using (var writeSteam = File.CreateText(pathAndFile))
-            {
-                for (int i = 0; i < nbLigne; i++)
-                {
-                    writeSteam.Write("ligne \n" + i);
-                }
-            }
-            DateTime t2Stream = DateTime.Now;
-            var diffStream = (int)(t2Stream - t1Stream).TotalMilliseconds;
-            Console.WriteLine($"Temps ecoule : {diffStream} ms");
-
-
-            // lecture de gros fichiers a l'aide des streams
-
-            using (var readStream = File.OpenText(pathAndFile))
-            {
-                while (true)
-                {
-                    var line = readStream.ReadLine();
-                    if(line == null)
-                    {
-                        break;
-                    }
-                    Console.WriteLine($"{ligne}");
-                }
-            }
         }
     }
 }
