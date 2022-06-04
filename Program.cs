@@ -22,12 +22,22 @@ namespace ProjetPizza
             // Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             //Programme_ Reseau
-            string url = "Https://codeavecjonathan.com/res/exemple.html";
+            string url = "Https://codeavecjonathan.com/res/pizzassss1.json";
 
             var webClient = new WebClient();
             //appel synchrone
-            String reponse = webClient.DownloadString(url);
-            Console.WriteLine(reponse);
+            try
+            {
+                String reponse = webClient.DownloadString(url);
+                Console.WriteLine(reponse);
+            }
+            catch (WebException ex)
+            {
+                var statusCode = ((HttpWebResponse)ex.Response).StatusCode;
+                
+                Console.WriteLine($" - Page non trouve :  {statusCode} - "); ;
+            }
+           
 
         }
 
