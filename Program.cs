@@ -37,9 +37,17 @@ namespace ProjetPizza
             }
             catch (WebException ex)
             {
-                var statusCode = ((HttpWebResponse)ex.Response).StatusCode;
-                
-                Console.WriteLine($" - Page non trouve :  {statusCode} - "); ;
+                if(ex.Response != null)
+                {
+                    var statusCode = ((HttpWebResponse)ex.Response).StatusCode;
+
+                    Console.WriteLine($" - Page non trouve :  {statusCode} - "); ;
+                }
+                else
+                {
+                    Console.WriteLine(ex.Message);
+                }
+               
             }
            
 
