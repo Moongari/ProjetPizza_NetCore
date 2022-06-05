@@ -59,13 +59,17 @@ namespace ProgrammeDateTime
             personnage2.Afficher();
 
             Console.WriteLine("Passage par valeur");
-            // essayons avec la struct 
+
+            // essayons avec la struct les structs heritent de value-Type ce sont donc des passage par valeur
+            // donc personnage4 change.
 
             var personnage3 = new PersonnageStruct() { FirstName = "Albert", LastName = "Toto", Force = 30 };
             var personnage4 = new PersonnageStruct();
+            personnage4 = personnage3;
             personnage4.FirstName = "RIRI";
             personnage4.LastName = "Ricola";
             personnage4.Force = 34;
+            
             personnage3.Afficher();
             personnage4.Afficher();
         }
