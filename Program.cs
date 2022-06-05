@@ -44,7 +44,11 @@ namespace ProgrammeDateTime
             while (!isDownload)
             {
                 Thread.Sleep(500);
-                Console.Write(".");
+                if (!isDownload)
+                {
+                    Console.Write(".");
+                }
+                
                 
             }
 
