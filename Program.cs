@@ -32,8 +32,11 @@ namespace ProgrammeDateTime
             var task1 = downLoadData(url1);
             var task2 = downLoadData(url2);
 
-            await task1;
-            await task2;
+            //await task1;
+            //await task2;
+
+            // on peut egalement ecrire cela ainsi
+            await Task.WhenAll(task1,task2);
             Console.WriteLine("Fin du programme");
         }
 
