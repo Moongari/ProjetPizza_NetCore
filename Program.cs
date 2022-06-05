@@ -86,6 +86,14 @@ namespace ProgrammeDateTime
             Console.WriteLine($"{name}----{espece}");
 
 
+            /*
+             * la plupart du temps les records sont utilisés dans
+             * le cas d'objet simple comme un POJO en Java 
+             * afin de contenir des informations on ne definit pas de methodes specialement
+             * dans 99% des cas les classes restent utilisés dans le cas on l'on veut gerer
+             * des comportements.
+             */
+
         }
 
 
