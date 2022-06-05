@@ -43,7 +43,18 @@ namespace ProgrammeDateTime
                 Console.WriteLine($"{FirstName} - {LastName} - {Force}");
             }
         }
-      
+
+        record PersonnageRecord
+        {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public int Force { get; set; }
+            public void Afficher()
+            {
+                Console.WriteLine($"{FirstName} - {LastName} - {Force}");
+            }
+        }
+
         // notion passage par valeur et passage par référence
 
         static void  Main(string[] args)
@@ -72,6 +83,28 @@ namespace ProgrammeDateTime
             
             personnage3.Afficher();
             personnage4.Afficher();
+
+
+
+            Console.WriteLine("les RECORDS");
+            // avec les records on a un passage par reference avec egalement
+            // des propriete d'une structure Value-Type
+            // ici il est capable de cloner l'objet personn5 en un objet personn6 et modifie ces valeurs
+            // ainsi les records utilise le passage par reference avec egalement la possibilité de passé des valeurs
+
+            var personn5 = new PersonnageRecord() { FirstName = "Albert", LastName = "Toto", Force = 30 };
+            var personn6 = personn5 with { };
+
+            personn5.FirstName = "Robert"; // ici on modifie bien l'objet personn5
+          
+            //passage par reference les 2 objets personnage pointent vers la meme adresse memoire
+            personn5.Afficher();
+            personn6.Afficher();
+
+            // si l'on fait une comparaison d'objet
+            Console.WriteLine("Resultat : "+ personn5.Equals(personn6)); // resultat false les 2 objets sont différents
+
+            
         }
 
 
