@@ -95,7 +95,7 @@ namespace ProgrammeDateTime
             var personn5 = new PersonnageRecord() { FirstName = "Albert", LastName = "Toto", Force = 30 };
             var personn6 = personn5 with { };
 
-            personn5.FirstName = "Robert"; // ici on modifie bien l'objet personn5
+            //personn5.FirstName = "Robert"; // ici on modifie bien l'objet personn5 on a donc cloner
           
             //passage par reference les 2 objets personnage pointent vers la meme adresse memoire
             personn5.Afficher();
@@ -103,8 +103,9 @@ namespace ProgrammeDateTime
 
             // si l'on fait une comparaison d'objet
             Console.WriteLine("Resultat : "+ personn5.Equals(personn6)); // resultat false les 2 objets sont différents
-
-            
+            // ici le resultat est true car on test l'egalité sur le contenu des variables
+            // celles ci sont bien egales
+            Console.WriteLine( personn5==personn6); 
         }
 
 
