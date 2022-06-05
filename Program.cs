@@ -45,18 +45,45 @@ namespace ProgrammeDateTime
         //l'objet
         record Animal(string nom, string race,  typeAnimal type);
 
+
+        // une autre facon de créer un record avec le principe de Deconstruct
+        // qui permet de recuperer les valeurs nom et type
+        record Arbres
+        {
+            public string Name { get; init; }
+            public string espece { get; init; }
+            public Arbres(string nom, string espece)
+            {
+                this.espece = espece;
+                this.Name = nom;
+            }
+
+            public void Deconstruct (out string nom, out string espece)
+            {
+                nom =this.Name;
+                espece = this.espece;    
+            }
+        }
+
   
 
         static void  Main(string[] args)
         {
             // autre utilisation des Record avec le principe de deconstructeur
             var animal = new Animal("chien", "cannide", typeAnimal.carnivore);
-            var (nom, race, type) = animal;
+            var (nom, race, type) = animal; // grace a cela on recupere les données passe au constructeur
+            // par le biais du Deconstruct
+
 
             Console.WriteLine(nom);
             Console.WriteLine(race);
             Console.WriteLine(typeAnimal.carnivore);
 
+            var arbres = new Arbres("sapin", "connifere");
+
+            var (name, espece) = arbres;
+
+            Console.WriteLine($"{name}----{espece}");
 
 
         }
