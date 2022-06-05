@@ -23,11 +23,37 @@ namespace ProgrammeDateTime
             // demarrage sur de nouvelles fonctionnalite a connaitre
 
             //Delegate
-            string nom = DemanderInformationUtilisateur("Indiquer votre nom ?", CheckValidationNom);
-            string telephone = DemanderInformationUtilisateur("Indiquer votre numero de telephone ?", CheckValidationTel);
+            //string nom = DemanderInformationUtilisateur("Indiquer votre nom ?", CheckValidationNom);
+            //string telephone = DemanderInformationUtilisateur("Indiquer votre numero de telephone ?", CheckValidationTel);
 
-            Console.WriteLine($"Bonjour {nom} - votre numéro de telephone est le {telephone}");
+            //Console.WriteLine($"Bonjour {nom} - votre numéro de telephone est le {telephone}");
 
+
+            //on cree un objet ActionPersonnagge
+            var action = new ActionPersonnage();
+            //on instancie un objet personne
+            var personn = new Personne() { name = "albert", infoPer = 30 };
+            //on fait appel a notre delegate et on lui passe les methodes associes
+            ActionPersonnage.ActionPersonneHandler actionHandler = personn.travail;
+            actionHandler += personn.courrir;
+            actionHandler += personn.dormir;
+            // on peut tout a fait créer d'autre methode qui reponde a la signature
+            // et les passer au delegate ce qui permet d'eviter de modifier la classes et etend
+            //ces possibilités.
+            actionHandler += sauter;
+            //on appel la methode action perso et on passe notre delegate
+            action.actionPerso(personn.name,personn.infoPer,actionHandler);
+
+
+           
+
+        }
+
+
+
+        static void sauter(Personne per)
+        {
+            Console.WriteLine($"{per.name}  saute une hauteur de {per.infoPer} metres");
         }
 
         static string DemanderInformationUtilisateur(string message, validationChaine validation = null)
