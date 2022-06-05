@@ -75,6 +75,11 @@ namespace ProgrammeDateTime
                 return "le numero de tel  ne peut  contenir de chiffres";
             }
 
+            if(s.Length < 10)
+            {
+                return "le numero de tel doit comporter 10 chiffres.";
+            }
+
 
 
             return null;
