@@ -34,15 +34,16 @@ namespace ProgrammeDateTime
             //on instancie un objet personne
             var personn = new Personne() { name = "albert", infoPer = 30 };
             //on fait appel a notre delegate et on lui passe les methodes associes
-            ActionPersonnage.ActionPersonneHandler actionHandler = personn.travail;
-            actionHandler += personn.courrir;
-            actionHandler += personn.dormir;
+            //ActionPersonnage.ActionPersonneHandler actionHandler = personn.travail;
+            Action<Personne> personnHandler = personn.travail;
+            personnHandler += personn.courrir;
+            personnHandler += personn.dormir;
             // on peut tout a fait créer d'autre methode qui reponde a la signature
             // et les passer au delegate ce qui permet d'eviter de modifier la classes et etend
             //ces possibilités.
-            actionHandler += sauter;
+            personnHandler += sauter;
             //on appel la methode action perso et on passe notre delegate
-            action.actionPerso(personn.name,personn.infoPer,actionHandler);
+            action.actionPerso(personn.name,personn.infoPer, personnHandler);
 
 
            
